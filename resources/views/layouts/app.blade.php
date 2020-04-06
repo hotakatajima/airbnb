@@ -81,11 +81,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="">
+                                    <a class="dropdown-item" href="{{ route('alllisting',[ 'id' => Auth::user()->id ]) }}">
                                        Manage Listing
-                                    </a>
-                                    <a class="dropdown-item" href="">
-                                        List Your Space
                                     </a>
                                     <a class="dropdown-item" href="">
                                        Your Reservations

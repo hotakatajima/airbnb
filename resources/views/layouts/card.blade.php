@@ -5,7 +5,7 @@
     <div class="card-body">
         @if ($title == 'listing')
             <div class="row text-center">
-                <form action="{{ route('create_house',[ 'id' => Auth::user()->id ]) }}" method="post" class="w-100">
+                <form action="{{ route('listing',[ 'house_id' => $house->id , 'subject' => 'listing' ]) }}" method="post" class="w-100">
                     @csrf
                     <div class="form-group">
                         <label>Home Type</label>
@@ -48,57 +48,73 @@
                 </form>
             </div>
         @elseif($title == 'pricing')
-            <form action="" method="post">
+            <form action="{{ route('price',[ 'house_id' => $house->id , 'subject' => 'pricing' ]) }}" method="post">
                 @csrf
                 <div class="form-group">
                     <label>Price</label>
-                    <input type="number" name="price" class="form-control">
+                    <input type="number" name="price" class="form-control" value="{{ $house->price }}">
                     <div class="text-center">
                         <button type="submit" class="btn btn-danger mt-3">Save</button>
                     </div>
                 </div>
             </form>
         @elseif($title == 'description')
-            <form action="" method="post">
+            <form action="{{ route('description',[ 'house_id' => $house->id , 'subject' => 'description' ]) }}" method="post">
                 @csrf
                 <div class="form-group">
                     <label>Listing name</label>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" name="name" class="form-control" value="{{ $house->name }}">
                     <label>Description</label>
-                    <textarea name="description" class="form-control"></textarea>
+                    <textarea name="description" class="form-control">{{ $house->description }}</textarea>
                     <div class="text-center">
                         <button type="submit" class="btn btn-danger mt-3">Save</button>
                     </div>
                 </div>
             </form>
         @elseif($title == 'photos')
-            <form action="" method="post">
+            <form action="{{ route('photo',[ 'house_id' => $house->id , 'subject' => 'photos' ]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group text-center">
                     <input type="file" name="photos"><br>
                     <button type="submit" class="btn btn-danger mt-3">Save</button>
                 </div>
             </form>
+            @if ($house->image != null)
+                <div class="row mt-5">
+                    <div class="col-4">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ $house->image }}" alt="" class="w-50 h-50">
+                            <div class="card-body">
+                                <form action="{{ route('deletehousepic',[ 'id' => $house->id ]) }}" method="post">
+                                    @csrf
+                                    <input type="submit" value="Delete" class="btn btn-danger text-light float-right">
+                                </form>
+                            </div>
+                        </div>                  
+                    </div>
+                </div>
+            @endif
         @elseif($title == 'amenities')
-            <form action="" method="post">
+            <form action="{{ route('amenities',[ 'house_id' => $house->id , 'subject' => 'amenities' ]) }}" method="post">
+                @csrf
                 <div class="form-group">
                     <div class="row mb-5">
                         <div class="col-4 text-center">
-                            <input type="checkbox" name="amenities"><span class="ml-2">TV</span>
+                            <input type="checkbox" name="amenities1" {{ $house->amenitie1 == 1 ? 'checked="checked"' : '' }}><span class="ml-2">TV</span>
                         </div>
                         <div class="col-4 text-center">
-                            <input type="checkbox" name="amenities"><span class="ml-2">Kitchen</span>
+                            <input type="checkbox" name="amenities2" {{ $house->amenitie2 == 1 ? 'checked="checked"' : '' }}><span class="ml-2">Kitchen</span>
                         </div>
                         <div class="col-4 text-center">
-                            <input type="checkbox" name="amenities"><span class="ml-2">Internet</span>
+                            <input type="checkbox" name="amenities3" {{ $house->amenitie3 == 1 ? 'checked="checked"' : '' }}><span class="ml-2">Internet</span>
                         </div>
                     </div>
                     <div class="row mb-5">
                         <div class="col-4 text-center">
-                            <input type="checkbox" name="amenities"><span class="ml-2">Heating</span>
+                            <input type="checkbox" name="amenities4" {{ $house->amenitie4 == 1 ? 'checked="checked"' : '' }}><span class="ml-2">Heating</span>
                         </div>
                         <div class="col-4 text-center">
-                            <input type="checkbox" name="amenities"><span class="ml-2">Air Conditioning</span>
+                            <input type="checkbox" name="amenities5" {{ $house->amenitie5 == 1 ? 'checked="checked"' : '' }}><span class="ml-2">Air Conditioning</span>
                         </div>
                     </div> 
                     <div class="text-center">
@@ -107,11 +123,11 @@
                 </div>
             </form>
         @elseif($title == 'location')
-            <form action="" method="post">
+            <form action="{{ route('location',[ 'house_id' => $house->id , 'subject' => 'location' ]) }}" method="post">
                 @csrf
                 <div class="form-group">
                     <label>Location</label>
-                    <input type="text" name="location" class="form-control">
+                    <input type="text" name="location" class="form-control" value="{{ $house->address }}">
                     <div class="text-center">
                         <button type="submit" class="btn btn-danger mt-3">Save</button>
                     </div>
