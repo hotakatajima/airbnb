@@ -9,14 +9,14 @@
                 @foreach ($listings as $listing)
                     <div class="row">
                         <div class="col-4">
-                            @if ($listing->image != null)
-                                <img src="{{ $listing->image }}" class="w-100">
+                            @if ($listing->pictures->where('house_id',$listing->id)->first()->picture != null)
+                                <img src="{{ $listing->pictures->where('house_id',$listing->id)->first()->picture }}" class="w-100">
                             @else
                                 <img src="/avatars/noimage.png" class="w-100">
                             @endif
                         </div>
                         <div class="col-4">
-                            @if ($listing->image != null)
+                            @if ($listing->name != null)
                                 <h3>{{ $listing->name }}</h3>
                             @else
                                 <h3 class="text-danger">No Name</h3>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\User;
 use \App\House;
+use \App\Picture;
 use Auth;
 
 class HostController extends Controller
@@ -114,9 +115,9 @@ class HostController extends Controller
         $path = "/avatars/".$imageName;
         $request->photos->move(public_path('avatars'), $imageName);
         
-        $house = House::find($house_id);
-        $house->update([
-            'image' => $path,
+        Picture::create([
+            'picture' => $path,
+            'house_id' => $house_id
         ]);
 
         return redirect()->route('hosuedetail',['subject' => $subject, 'house_id' => $house_id ]);
@@ -124,10 +125,7 @@ class HostController extends Controller
 
     public function delete_housepic($id)
     {
-        $delete = House::find($id);
-        $delete->update([
-            'image' => null
-        ]);
+        $delete = Picture::destroy($id);
         return back();
     }
 
