@@ -11,4 +11,10 @@ class House extends Model
     protected $fillable = [
         'housetype','roomtype','accommodate','bedrooms','bathrooms','price','name','description','image','amenitie1','amenitie2','amenitie3','amenitie4','amenitie5','address','publish','user_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 }

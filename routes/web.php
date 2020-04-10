@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/house/listing/{id}/view', 'HomeController@eachhouse')->name('eachhouse');
 Route::patch('/host/{id}', 'HostController@index')->name('host');
 Route::post('/host/{id}', 'HostController@indexindex')->name('create_host');
 Route::post('/create/house/{id}', 'HostController@create_house')->name('create_house');

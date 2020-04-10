@@ -25,29 +25,26 @@
         <div class="homes">
             <h2 class="mb-3">Homes</h2>
             <div class="d-flex justify-content-between">
-                <div class="card m-0 d-inline-block" style="width:30%;">
-                    <div class="card-img-top">
-                        <img src="/avatars/house1.jpg" alt="" class="w-100">
-                    </div>
-                    <div class="card-body">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, distinctio rerum sit omnis voluptates reiciendis ipsa voluptate expedita beatae natus, libero facere eum aut esse molestias illum quia optio dignissimos.
-                    </div>
-                </div>
-                <div class="card m-0 d-inline-block" style="width:30%;">
-                    <div class="card-img-top">
-                        <img src="/avatars/house1.jpg" alt="" class="w-100">
-                    </div>
-                    <div class="card-body">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, distinctio rerum sit omnis voluptates reiciendis ipsa voluptate expedita beatae natus, libero facere eum aut esse molestias illum quia optio dignissimos.
-                    </div>
-                </div>
-                <div class="card m-0 d-inline-block" style="width:30%;">
-                    <div class="card-img-top">
-                        <img src="/avatars/house1.jpg" alt="" class="w-100">
-                    </div>
-                    <div class="card-body">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, distinctio rerum sit omnis voluptates reiciendis ipsa voluptate expedita beatae natus, libero facere eum aut esse molestias illum quia optio dignissimos.
-                    </div>
+                <div class="row">
+                    @foreach ($houses as $house)
+                        <div class="col-4">
+                            <div class="card mt-5 d-inline-block">
+                                <div class="card-img-top">
+                                    @if ($house->image != null)
+                                        <img src="{{ $house->image }}" alt="" class="w-100">
+                                    @else
+                                        <img src="/avatars/noimage.png" class="w-100">
+                                    @endif
+                                </div>
+                                <div class="card-body">
+                                    <a href="{{ route('eachhouse',[ 'id' => $house->id ]) }}">{{ $house->name }}</a><br>
+                                    <span class="text-danger">{{ $house->price }}</span><br>
+                                    ★★★★★<br>
+                                    1 review
+                                </div>
+                            </div>
+                        </div>  
+                    @endforeach
                 </div>
             </div>
 

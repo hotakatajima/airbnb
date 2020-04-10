@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\House;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $houses = House::where('publish',true)->get();
+        return view('welcome',compact('houses'));
+    }
+
+    public function eachhouse($id)
+    {
+        $house = House::find($id);
+        return view('house.eachhouse',compact('house'));
     }
 }
