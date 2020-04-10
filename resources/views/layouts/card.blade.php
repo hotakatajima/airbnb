@@ -51,7 +51,7 @@
             <form action="{{ route('price',[ 'house_id' => $house->id , 'subject' => 'pricing' ]) }}" method="post">
                 @csrf
                 <div class="form-group">
-                    <label>Price</label>
+                    <label>Price(per night)</label>
                     <input type="number" name="price" class="form-control" value="{{ $house->price }}">
                     <div class="text-center">
                         <button type="submit" class="btn btn-danger mt-3">Save</button>
@@ -79,21 +79,24 @@
                     <button type="submit" class="btn btn-danger mt-3">Save</button>
                 </div>
             </form>
-            @if ($house->image != null)
-                <div class="row mt-5">
-                    <div class="col-4">
-                        <div class="card">
-                            <img class="card-img-top" src="{{ $house->image }}" alt="" class="w-50 h-50">
-                            <div class="card-body">
-                                <form action="{{ route('deletehousepic',[ 'id' => $house->id ]) }}" method="post">
-                                    @csrf
-                                    <input type="submit" value="Delete" class="btn btn-danger text-light float-right">
-                                </form>
+            <div class="row mt-5">
+                @foreach ($house->pictures as $picture)
+                    @if ($picture->picture != null)
+                            <div class="col-4">
+                                <div class="card">
+                                    <img class="card-img-top" src="{{ $picture->picture }}" alt="" style="width:205px; height:140px;">
+                                    <div class="card-body">
+                                        <form action="{{ route('deletehousepic',[ 'id' => $picture->id ]) }}" method="post">
+                                            @csrf
+                                            <input type="submit" value="Delete" class="btn btn-danger text-light float-right">
+                                        </form>
+                                    </div>
+                                </div>                  
                             </div>
-                        </div>                  
-                    </div>
-                </div>
-            @endif
+                    @endif
+                @endforeach
+            </div>
+            
         @elseif($title == 'amenities')
             <form action="{{ route('amenities',[ 'house_id' => $house->id , 'subject' => 'amenities' ]) }}" method="post">
                 @csrf

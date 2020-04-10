@@ -22,31 +22,30 @@
 
         <hr class="my-5">
     
-        <div class="homes">
-            <h2 class="mb-3">Homes</h2>
-            <div class="d-flex justify-content-between">
-                <div class="row">
-                    @foreach ($houses as $house)
-                        <div class="col-4">
-                            <div class="card mt-5 d-inline-block">
-                                <div class="card-img-top">
-                                    @if ($house->image != null)
-                                        <img src="{{ $house->image }}" alt="" class="w-100">
-                                    @else
-                                        <img src="/avatars/noimage.png" class="w-100">
-                                    @endif
-                                </div>
-                                <div class="card-body">
-                                    <a href="{{ route('eachhouse',[ 'id' => $house->id ]) }}">{{ $house->name }}</a><br>
-                                    <span class="text-danger">{{ $house->price }}</span><br>
-                                    ★★★★★<br>
-                                    1 review
-                                </div>
+        <h2 class="mb-3">Homes</h2>
+        <div class="d-flex justify-content-between">
+            <div class="row w-100">
+                @foreach ($houses as $house)
+                    <div class="col-4">
+                        <div class="card mt-5 d-inline-block">
+                            <div class="card-img-top">
+                                @if ($house->pictures->count() > 0)
+                                    <img src="{{ $house->pictures->first()->picture }}" alt="" class="w-100">
+                                @else
+                                    <img src="/avatars/noimage.png" class="w-100">
+                                @endif
                             </div>
-                        </div>  
-                    @endforeach
-                </div>
+                            <div class="card-body">
+                                <a href="{{ route('eachhouse',[ 'id' => $house->id ]) }}">{{ $house->name }}</a><br>
+                                <span class="text-danger">{{ $house->price }}</span><br>
+                                ★★★★★<br>
+                                1 review
+                            </div>
+                        </div>
+                    </div>  
+                @endforeach
             </div>
+        </div>
 
         <div class="homes mx-auto mt-5">
             <h2>Cities</h2>

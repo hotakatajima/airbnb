@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="container">
-        <img src="{{ $house->image }}" alt="" class="w-100">
+        <img src="{{ $house->pictures->first()->picture }}" alt="" class="w-100">
         <div class="row mt-5">
             <div class="col-5">
-                {{ $house->name }}<br>
-                {{ $house->address }}
+                <h2>{{ $house->name }}</h2><br>
+                <h3>{{ $house->address }}</h3>
             </div>
             <div class="col-2">
                 @if ($house->user->image == null)
@@ -14,12 +14,12 @@
                 @else
                     <img src="{{ $house->user->image }}" alt="" class="w-100 rounded-circle">
                 @endif
-                <p class="text-center">{{ $house->user->name }}</p>
+                <h3 class="mt-3 text-center">{{ $house->user->name }}</h3>
             </div>
             <div class="col-5">
                 <div class="card">
                     <div class="card-header">
-                        <span class="float-left">{{ $house->price }}</span>
+                        <h3 class="float-left">{{ $house->price }}円</h3>
                         <span class="float-right">Per Night</span>
                     </div>
                     <div class="card-body">
@@ -44,7 +44,9 @@
                 </div>
             </div>
         </div>
+
         <hr>
+
         <div class="row">
             <div class="col-7">
                 <div class="row">
@@ -67,14 +69,18 @@
                 </div>
             </div>
         </div>
+
         <hr>
+
         <div class="row">
             <div class="col-12">
                 <h3>About This Listing</h3><br>
                 <span>{{ $house->description }}</span>
             </div>
         </div>
+
         <hr>
+
         <div class="row">
             <div class="col-9">
                 <div class="row">
@@ -113,15 +119,39 @@
                 </div>
             </div>
         </div>
+
         <div class="row mt-3">
             <div class="col-9">
                 <div class="row">
                     <div class="col-12">
-                        <img src="{{ $house->image }}" alt="" class="w-100">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                @foreach ($house->pictures as $key => $picture)
+                                    @if ($key == 0)
+                                        <div class="carousel-item active">
+                                            <img class="d-block w-100" src="{{ $picture->first()->picture }}" alt="900x400" data-holder-rendered="true" class="w-100" style="height:550px;">
+                                        </div>
+                                    @else
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100" src="{{ $picture->picture }}" alt="900x400" data-holder-rendered="true" class="w-100" style="height:550px;">
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                        </div>                                              
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="row mt-3">
             <div class="col-9">
                 <div class="row">
@@ -145,6 +175,7 @@
                 <hr style="color:gray;">
             </div>
         </div>
+
         <div class="row mt-3">
             <div class="col-9">
                 <div class="row">
@@ -154,6 +185,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row mt-3 mb-5">
             <div class="col-9">
                 <div class="row">
@@ -162,7 +194,7 @@
                         <h4>Near by</h4>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col-4">
                         <div class="card">
                             <img src="/avatars/house1.jpg" alt="" class="w-100">
@@ -193,5 +225,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 @endsection

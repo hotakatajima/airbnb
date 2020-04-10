@@ -23,10 +23,6 @@ class CreateHousesTable extends Migration
             $table->integer('price')->nullable();
             $table->string('name')->nullable();
             $table->string('description')->nullable();
-            $table->string('image1')->nullable();
-            $table->string('image2')->nullable();
-            $table->string('image3')->nullable();
-            $table->string('image4')->nullable();
             $table->boolean('amenitie1')->default(false);
             $table->boolean('amenitie2')->default(false);
             $table->boolean('amenitie3')->default(false);
