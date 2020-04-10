@@ -3,7 +3,7 @@
         <li class="list-group-item"><a href="{{ route('hosuedetail',['house_id' => $house_id, 'subject' => 'listing' ]) }}">Listing</a><span class="float-right">✔︎</span></li>
         <li class="list-group-item"><a href="{{ route('hosuedetail',['house_id' => $house_id, 'subject' => 'pricing' ]) }}">Pricing</a><span class="float-right">{{ $house->price == null ? '' : '✔︎' }}</span></li>
         <li class="list-group-item"><a href="{{ route('hosuedetail',['house_id' => $house_id, 'subject' => 'description' ]) }}">Description</a><span class="float-right">{{ $house->name == null ? '' : '✔︎' }}</span></li>
-        <li class="list-group-item"><a href="{{ route('hosuedetail',['house_id' => $house_id, 'subject' => 'photos' ]) }}">Photos</a><span class="float-right">{{ $house->pictures->count() < 0 ? '' : '✔︎' }}</span></li>
+        <li class="list-group-item"><a href="{{ route('hosuedetail',['house_id' => $house_id, 'subject' => 'photos' ]) }}">Photos</a><span class="float-right">{{ $house->pictures->count() <= 0 ? '' : '✔︎' }}</span></li>
         <li class="list-group-item"><a href="{{ route('hosuedetail',['house_id' => $house_id, 'subject' => 'amenities' ]) }}">Amenities</a><span class="float-right">✔︎</span></li>
         <li class="list-group-item"><a href="{{ route('hosuedetail',['house_id' => $house_id, 'subject' => 'location' ]) }}">Location</a><span class="float-right">{{ $house->address == null ? '' : '✔︎' }}</span></li>
     </ul>

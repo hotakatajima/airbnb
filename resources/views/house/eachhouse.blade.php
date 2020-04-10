@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        
         <img src="{{ $house->pictures->first()->picture }}" alt="" class="w-100">
         <div class="row mt-5">
             <div class="col-5">
@@ -23,23 +24,22 @@
                         <span class="float-right">Per Night</span>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-6">
-                                Check In
-                                <form action="" method="post">
-                                    @csrf
-                                    <input type="date" name="">
-                                </form>
+                        <form action="{{ route('reservation',[ 'user_id' => Auth::user()->id, 'house_id' => $house->id ]) }}" method="post">
+                            <div class="form-group">
+                                @csrf
+                                <div class="float-left">
+                                    Check In
+                                    <input type="date" name="checkin" class="form-control w-100" required>
+                                </div>
+                                <div class="float-right">
+                                    Check Out
+                                    <input type="date" name="checkout" class="form-control w-100" required>
+                                </div>
+                                <div class="text-center">
+                                    <input type="submit" value="Book Now" class="btn btn-danger w-75 mt-5">
+                                </div>
                             </div>
-                            <div class="col-6">
-                                Check Out
-                                <form action="" method="post">
-                                    @csrf
-                                    <input type="date" name="">
-                                </form>
-                            </div>
-                            <input type="submit" value="Book Now" class="btn btn-danger w-75 mt-5 mx-auto" disabled>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
