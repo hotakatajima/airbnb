@@ -14,9 +14,9 @@ class UsersTableSeeder extends Seeder
         $user = new \App\User([
             'name' => 'hotaka',
             'email' => 'hotaka@gmail.com',
-            'password' => 'hotahota',
+            'password' => Hash::make('hotahota'),
             'status' => 'host',
-            'image' => '1586057248.jpg'
+            'image' => '/avatars/1586057248.jpg'
         ]);
         
         $user->save();
@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
         $user = new \App\User([
             'name' => 'yutaka',
             'email' => 'yutaka@gmail.com',
-            'password' => 'yutaka00',
+            'password' => Hash::make('yutaka00'),
             'status' => 'user',
             'image' => null
         ]);
@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
         $user = new \App\User([
             'name' => 'daisuke',
             'email' => 'daisuke@gmail.com',
-            'password' => 'daisuke00',
+            'password' => Hash::make('daisuke00'),
             'status' => 'user',
             'image' => null
         ]);

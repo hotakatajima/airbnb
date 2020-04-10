@@ -3,30 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\User;
 use \App\House;
 use \App\Picture;
-use Auth;
 
-class HostController extends Controller
+class HouseController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    public function index(Request $request)
+    public function index()
     {
-        $user = User::find(Auth::user()->id);
-        $user->update([
-            'status' => 'host'
-        ]);
-        return view('host.index');
+        $houses = House::where('publish',true)->get();
+        return view('welcome',compact('houses'));
     }
 
-    public function indexindex()
+    public function eachhouse($id)
     {
-        return view('host.index');
+        $house = House::find($id);
+        return view('house.eachhouse',compact('house'));
     }
 
     public function create_house(Request $request)
@@ -143,5 +139,4 @@ class HostController extends Controller
         $listings = House::where('user_id',$id)->get();
         return view('host.listing',compact('listings'));
     }
-
 }
