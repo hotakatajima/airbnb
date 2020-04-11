@@ -5,20 +5,20 @@
         
         <img src="{{ $house->pictures->first()->picture }}" alt="" class="w-100">
         <div class="row mt-5">
-            <div class="col-5">
+            <div class="col-4">
                 <h2>{{ $house->name }}</h2><br>
                 <h3>{{ $house->address }}</h3>
             </div>
             <div class="col-2">
                 @if ($house->user->image == null)
-                    <img src="/avatars/anonymous.jpeg" alt="" class="w-100 rounded-circle">
+                    <img src="/avatars/anonymous.jpeg" alt="" class="rounded-circle"  style="width:180px; height:180px;">
                 @else
-                    <img src="{{ $house->user->image }}" alt="" class="w-100 rounded-circle">
+                    <img src="{{ $house->user->image }}" alt="" class="rounded-circle" style="width:180px; height:180px;">
                 @endif
                 <h3 class="mt-3 text-center">{{ $house->user->name }}</h3>
             </div>
-            <div class="col-5">
-                <div class="card">
+            <div class="col-6">
+                <div class="card float-right">
                     <div class="card-header">
                         <h3 class="float-left">{{ $house->price }}円</h3>
                         <span class="float-right">Per Night</span>
@@ -29,11 +29,11 @@
                                 @csrf
                                 <div class="float-left">
                                     Check In
-                                    <input type="date" name="checkin" class="form-control w-100" required>
+                                    <input type="date" name="checkin" class="form-control" style="width:90%;" required>
                                 </div>
                                 <div class="float-right">
                                     Check Out
-                                    <input type="date" name="checkout" class="form-control w-100" required>
+                                    <input type="date" name="checkout" class="form-control" style="width:90%;" required>
                                 </div>
                                 <div class="text-center">
                                     <input type="submit" value="Book Now" class="btn btn-danger w-75 mt-5">
