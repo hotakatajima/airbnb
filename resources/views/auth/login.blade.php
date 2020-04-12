@@ -9,14 +9,14 @@
                     @csrf
                     <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }} w-50 mx-auto mt-3" name="email" value="{{ old('email') }}" placeholder="Your Email" required autofocus>
                     @if ($errors->has('email'))
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback text-center mx-auto" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>
                         </span>
                     @endif                        
                     
                     <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }} w-50 mx-auto mt-3 mb-3" name="password" placeholder="Your Password" required>
                     @if ($errors->has('password'))
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback text-center mx-auto" role="alert">
                             <strong>{{ $errors->first('password') }}</strong>
                         </span>
                     @endif

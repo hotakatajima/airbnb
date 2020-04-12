@@ -126,5 +126,62 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        @if (session('afteredit_message'))
+            $(function () {
+                    toastr.success('{{ session('afteredit_message') }}');
+            });
+        @endif
+        @if (session('afterinsert_housedetail'))
+            $(function () {
+                    toastr.success('{{ session('afterinsert_housedetail') }}');
+            });
+        @endif
+        @if (session('afterupdate_listing'))
+            $(function () {
+                    toastr.success('{{ session('afterupdate_listing') }}');
+            });
+        @endif
+        @if (session('afterupdate_price'))
+            $(function () {
+                    toastr.success('{{ session('afterupdate_price') }}');
+            });
+        @endif
+        @if (session('afterupdate_description'))
+            $(function () {
+                    toastr.success('{{ session('afterupdate_description') }}');
+            });
+        @endif
+        @if (session('afterupdate_location'))
+            $(function () {
+                    toastr.success('{{ session('afterupdate_location') }}');
+            });
+        @endif
+        @if (session('afterupdate_amenities'))
+            $(function () {
+                    toastr.success('{{ session('afterupdate_amenities') }}');
+            });
+        @endif
+        @if (session('afterupdate_photo'))
+            $(function () {
+                    toastr.success('{{ session('afterupdate_photo') }}');
+            });
+        @endif
+        @if (session('publish'))
+            $(function () {
+                    toastr.success('{{ session('publish') }}');
+            });
+        @endif
+        @if (session('book'))
+            $(function () {
+                    toastr.success('{{ session('book') }}');
+            });
+        @endif
+        @if (session('login_success'))
+            $(function () {
+                    toastr.success('{{ session('login_success') }}');
+            });
+        @endif
+    </script>
 </body>
 </html>

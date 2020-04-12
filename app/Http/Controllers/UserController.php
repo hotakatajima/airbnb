@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use \App\User;
 use Auth;
+use Hash;
 
 class UserController extends Controller
 {
@@ -39,7 +41,7 @@ class UserController extends Controller
         return view('users.edituser',compact('user'));
     }
 
-    public function uploadprofile($id, Request $request)
+    public function uploadprofile($id, UserRequest $request)
     {
         $user = User::find($id);
         if($request->password == null){
@@ -48,7 +50,7 @@ class UserController extends Controller
                 'phone' => $request->phone,
                 'description' => $request->description,
                 'email' => $request->email,
-                'password' => $user->password,
+                'password' => Hash::make($user->password),
             ]);
         }else{
             $user->update([
@@ -56,10 +58,11 @@ class UserController extends Controller
                 'phone' => $request->phone,
                 'description' => $request->description,
                 'email' => $request->email,
-                'password' => $request->password,
+                'password' => Hash::make($request->password),
             ]);
         }
-        
+
+        session()->flash('afteredit_message', 'Your account has been updated successfully!');
         return back();
     }
 
