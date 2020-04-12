@@ -11,9 +11,9 @@
             </div>
             <div class="col-2">
                 @if ($house->user->image == null)
-                    <img src="/avatars/anonymous.jpeg" alt="" class="rounded-circle"  style="width:180px; height:180px;">
+                    <img src="/avatars/anonymous.jpeg" alt="" class="rounded-circle"  style="width:180px; height:180px; object-fit: cover;">
                 @else
-                    <img src="{{ $house->user->image }}" alt="" class="rounded-circle" style="width:180px; height:180px;">
+                    <img src="{{ $house->user->image }}" alt="" class="rounded-circle" style="width:180px; height:180px; object-fit: cover;">
                 @endif
                 <h3 class="mt-3 text-center">{{ $house->user->name }}</h3>
             </div>

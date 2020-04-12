@@ -16,7 +16,9 @@ class UsersTableSeeder extends Seeder
             'email' => 'hotaka@gmail.com',
             'password' => Hash::make('hotahota'),
             'status' => 'host',
-            'image' => '/avatars/1586057248.jpg'
+            'image' => '/avatars/1586057248.jpg',
+            'phone' => null,
+            'description' => null
         ]);
         
         $user->save();
@@ -26,7 +28,9 @@ class UsersTableSeeder extends Seeder
             'email' => 'yutaka@gmail.com',
             'password' => Hash::make('yutaka00'),
             'status' => 'user',
-            'image' => null
+            'image' => null,
+            'phone' => null,
+            'description' => null
         ]);
         
         $user->save();
@@ -36,7 +40,9 @@ class UsersTableSeeder extends Seeder
             'email' => 'daisuke@gmail.com',
             'password' => Hash::make('daisuke00'),
             'status' => 'user',
-            'image' => null
+            'image' => null,
+            'phone' => null,
+            'description' => null
         ]);
         
         $user->save();

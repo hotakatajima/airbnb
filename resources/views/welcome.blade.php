@@ -29,11 +29,7 @@
                     <div class="col-4">
                         <div class="card mt-5 d-inline-block">
                             <div class="card-img-top">
-                                @if ($house->pictures->count() > 0)
-                                    <img src="{{ $house->pictures->first()->picture }}" alt="" class="w-100">
-                                @else
-                                    <img src="/avatars/noimage.png" class="w-100">
-                                @endif
+                                <img src="{{ $house->pictures->first()->picture }}" alt="" class="w-100">
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('eachhouse',[ 'id' => $house->id ]) }}">{{ $house->name }}</a><br>

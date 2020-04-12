@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,6 +22,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -76,7 +78,11 @@
                                 </form>                                
                             @endif
                             <li class="nav-item">
-                                <img src="/avatars/black.png" alt="" class="rounded-circle" style="width:40px; height:40px;">
+                                @if (Auth::user()->image != null)
+                                    <img src="{{ Auth::user()->image }}" alt="" class="rounded-circle" style="width:40px; height:40px;">
+                                @else
+                                    <img src="/avatars/black.png" alt="" class="rounded-circle" style="width:40px; height:40px;">
+                                @endif
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -87,14 +93,14 @@
                                     <a class="dropdown-item" href="{{ route('alllisting',[ 'id' => Auth::user()->id ]) }}">
                                        Manage Listing
                                     </a>
-                                    <a class="dropdown-item" href="">
+                                    <a class="dropdown-item" href="{{ route('yourreservation', ['id' => Auth::user()->id ] ) }}">
                                        Your Reservations
                                     </a>
-                                    <a class="dropdown-item" href="">
-                                        Your Trips
+                                    <a class="dropdown-item" href="{{ route('yourtrip', ['id' => Auth::user()->id ] ) }}">
+                                        Your Trip
                                     </a>
                                     <hr class="m-1">
-                                    <a class="dropdown-item" href="">
+                                    <a class="dropdown-item" href="{{ route('useredit',[ 'id' => Auth::user()->id ]) }}">
                                         Edit Profile
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -117,5 +123,8 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </body>
 </html>
