@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Reservation;
 use Auth;
+use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
@@ -20,4 +21,19 @@ class ReservationController extends Controller
 
         return back();
     }
+
+    public function yourtrip($id)
+    {
+        $now = new Carbon('today', 'Asia/Tokyo');
+        $trips = Reservation::where('user_id',$id)->where('checkout_date', '<' ,$now)->get();
+        return view('history.trip',compact('trips'));
+    }
+
+    public function yourreservation($id)
+    {
+        $now = new Carbon('today', 'Asia/Tokyo');
+        $reservations = Reservation::where('user_id',$id)->where('checkout_date', '>=' ,$now)->get();
+        return view('history.reservation',compact('reservations'));
+    }
+
 }

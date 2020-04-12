@@ -32,4 +32,9 @@ Route::post('/house/{id}/deletepic', 'HouseController@delete_housepic')->name('d
 Route::post('/house/{id}/publish', 'HouseController@publish')->name('publish');
 Route::get('/house/{house_id}/{subject}', 'HouseController@show_house')->name('hosuedetail');
 Route::get('/house/{id}', 'HouseController@alllisting')->name('alllisting');
-Route::post('reservation/{user_id}/{house_id}', 'ReservationController@reservation')->name('reservation');
+Route::post('/reservation/{user_id}/{house_id}', 'ReservationController@reservation')->name('reservation');
+Route::get('/yourtrip/user/{id}', 'ReservationController@yourtrip')->name('yourtrip');
+Route::get('/yourreservation/user/{id}', 'ReservationController@yourreservation')->name('yourreservation');
+Route::get('/user/{id}', 'UserController@userprofile')->name('userprofile');
+Route::get('/user/edit/{id}', 'UserController@useredit')->name('useredit');
+Route::post('/user/upload/{id}', 'UserController@uploadprofile')->name('uploadprofile');
