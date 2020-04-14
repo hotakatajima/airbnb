@@ -14,19 +14,60 @@
                     @csrf
                     <div class="form-group">
                         <input type="text" name="name" class="form-control mt-3" value="{{ $user->name }}">
+                        @if($errors->has('name'))
+                            <span class="help-block text-danger">
+                                <strong>
+                                    {{ $errors->first('name')}}
+                                </strong>
+                            </span>
+                        @endif    
+                        
                         @if ($user->phone == null)
                             <input type="number" name="phone" class="form-control mt-3" placeholder="Phone number">
                         @else
                             <input type="number" name="phone" class="form-control mt-3" value="{{ $user->phone }}">
                         @endif
+                        @if($errors->has('phone'))
+                            <span class="help-block text-danger">
+                                <strong>
+                                    {{ $errors->first('phone')}}
+                                </strong>
+                            </span>
+                        @endif    
+                        
                         @if ($user->description == null)
                             <textarea class="form-control mt-3" name="description" placeholder="Description"></textarea>
                         @else
                             <textarea class="form-control mt-3" name="description">{{ $user->description }}</textarea>
                         @endif
+                        @if($errors->has('description'))
+                            <span class="help-block text-danger">
+                                <strong>
+                                    {{ $errors->first('description')}}
+                                </strong>
+                            </span>
+                        @endif    
+                        
                         <input type="email" name="email" class="form-control mt-3" value="{{ $user->email }}">
-                        <input type="password" name="" class="form-control mt-3" placeholder="New Password">
-                        <input type="password" name="" class="form-control mt-3" placeholder="Confirm Password">
+                        @if($errors->has('email'))
+                            <span class="help-block text-danger">
+                                <strong>
+                                    {{ $errors->first('email')}}
+                                </strong>
+                            </span>
+                        @endif              
+                        
+                        <input type="password" name="password" class="form-control mt-3" placeholder="New Password">
+                            @if($errors->has('password'))
+                                <span class="help-block text-danger">
+                                    <strong>
+                                        {{ $errors->first('password')}}
+                                    </strong>
+                                </span>
+                            @endif              
+                        
+                        <input type="password" name="password_confirmation" class="form-control mt-3" placeholder="Confirm Password">
+                        
                         <input type="submit" name="" class="btn btn-danger form-control mt-3" value="Save">
                     </div>
                 </form>                  

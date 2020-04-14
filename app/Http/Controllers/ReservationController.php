@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ReservationRequest;
 use \App\Reservation;
 use Auth;
 use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
-    public function reservation($user_id, $house_id, Request $request)
+    public function reservation($user_id, $house_id, ReservationRequest $request)
     {
         Reservation::create([
             'user_id' => $user_id,
@@ -18,7 +19,7 @@ class ReservationController extends Controller
             'checkout_date'=> $request->checkout,
             'passed_day' => 0
         ]);
-
+        session()->flash('book', 'Your booking has done successfully!');
         return back();
     }
 

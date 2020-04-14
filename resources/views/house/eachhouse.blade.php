@@ -27,16 +27,39 @@
                         <form action="{{ route('reservation',[ 'user_id' => Auth::user()->id, 'house_id' => $house->id ]) }}" method="post">
                             <div class="form-group">
                                 @csrf
-                                <div class="float-left">
-                                    Check In
-                                    <input type="date" name="checkin" class="form-control" style="width:90%;" required>
+                                
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="float-left">
+                                            Check In
+                                            <input type="date" name="checkin" class="form-control" style="width:90%;" required>
+                                        </div>
+        
+                                        <div class="float-right">
+                                            Check Out
+                                            <input type="date" name="checkout" class="form-control" style="width:90%;" required>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="float-right">
-                                    Check Out
-                                    <input type="date" name="checkout" class="form-control" style="width:90%;" required>
+                                
+                                <div class="row">
+                                    <div class="col-12">
+                                        @if($errors->has('checkout'))
+                                            <span class="help-block text-danger">
+                                                <strong>
+                                                    {{ $errors->first('checkout')}}
+                                                </strong>
+                                            </span>
+                                        @endif    
+                                    </div>
                                 </div>
-                                <div class="text-center">
-                                    <input type="submit" value="Book Now" class="btn btn-danger w-75 mt-5">
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="text-center">
+                                            <input type="submit" value="Book Now" class="btn btn-danger w-75 mt-5">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -129,7 +152,7 @@
                                 @foreach ($house->pictures as $key => $picture)
                                     @if ($key == 0)
                                         <div class="carousel-item active">
-                                            <img class="d-block w-100" src="{{ $picture->first()->picture }}" alt="900x400" data-holder-rendered="true" class="w-100" style="height:550px;">
+                                            <img class="d-block w-100" src="{{ $picture->picture }}" alt="900x400" data-holder-rendered="true" class="w-100" style="height:550px;">
                                         </div>
                                     @else
                                         <div class="carousel-item">

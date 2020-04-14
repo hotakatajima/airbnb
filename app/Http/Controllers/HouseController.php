@@ -39,7 +39,7 @@ class HouseController extends Controller
 
         $house_id = $newhosue->id;
         $subject = $request->subject;
-
+        session()->flash('afterinsert_housedetail', 'Saved!');
         return redirect()->route('hosuedetail',['house_id' => $house_id,'subjct' => 'listing' ]); 
     }
 
@@ -61,6 +61,7 @@ class HouseController extends Controller
             'bedrooms' =>  $request->bedrooms,
             'bathrooms' =>  $request->bathrooms,
         ]);
+        session()->flash('afterupdate_listing', 'Saved!');
         return redirect()->route('hosuedetail',['subject' => $subject, 'house_id' => $house_id ]);
     }
 
@@ -70,6 +71,7 @@ class HouseController extends Controller
         $house->update([
             'price' => $request->price
         ]);
+        session()->flash('afterupdate_price', 'Saved!');
         return redirect()->route('hosuedetail',['subject' => $subject, 'house_id' => $house_id ]);
     }
 
@@ -80,6 +82,7 @@ class HouseController extends Controller
             'name' => $request->name,
             'description' => $request->description,
         ]);
+        session()->flash('afterupdate_description', 'Saved!');
         return redirect()->route('hosuedetail',['subject' => $subject, 'house_id' => $house_id ]);
     }
 
@@ -89,6 +92,7 @@ class HouseController extends Controller
         $house->update([
             'address' => $request->location
         ]);
+        session()->flash('afterupdate_location', 'Saved!');
         return redirect()->route('hosuedetail',['subject' => $subject, 'house_id' => $house_id ]);
     }
 
@@ -102,6 +106,7 @@ class HouseController extends Controller
             'amenitie4' => $request->amenities4 == 'on',
             'amenitie5' => $request->amenities5 == 'on'
         ]);
+        session()->flash('afterupdate_amenities', 'Saved!');
         return redirect()->route('hosuedetail',['subject' => $subject, 'house_id' => $house_id ]);
     }
 
@@ -115,7 +120,7 @@ class HouseController extends Controller
             'picture' => $path,
             'house_id' => $house_id
         ]);
-
+        session()->flash('afterupdate_photo', 'Saved!');
         return redirect()->route('hosuedetail',['subject' => $subject, 'house_id' => $house_id ]);
     }
 
@@ -131,6 +136,7 @@ class HouseController extends Controller
         $update->update([
             'publish' => true
         ]);
+        session()->flash('publish', 'Your accommodation is published!');
         return back();
     }
 
