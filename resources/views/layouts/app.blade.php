@@ -78,11 +78,7 @@
                                 </form>                                
                             @endif
                             <li class="nav-item">
-                                @if (Auth::user()->image != null)
-                                    <img src="{{ Auth::user()->image }}" alt="" class="rounded-circle" style="width:40px; height:40px;">
-                                @else
-                                    <img src="/avatars/black.png" alt="" class="rounded-circle" style="width:40px; height:40px;">
-                                @endif
+                                <img src="{{ Auth::user()->gravatar() }}" alt="" class="rounded-circle" style="width:40px; height:40px;">
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

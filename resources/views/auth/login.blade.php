@@ -35,9 +35,16 @@
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             @endif
-                            <button type="submit" class="btn btn-danger float-right">
-                                {{ __('Login') }}
-                            </button>
+
+                            <div class="form-group">
+                                <div class="col-12">
+                                  <a href="" class="btn btn-danger">Login with Facebook</a>
+                                </div>
+                                <button type="submit" class="btn btn-danger float-right">
+                                    {{ __('Login') }}
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                     <input type="hidden" name="status">
