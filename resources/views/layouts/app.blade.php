@@ -78,7 +78,7 @@
                                 </form>                                
                             @endif
                             <li class="nav-item">
-                                <img src="{{ Auth::user()->gravatar() }}" alt="" class="rounded-circle" style="width:40px; height:40px;">
+                                <a href="https://ja.gravatar.com/" target="_blank"><img src="{{ Auth::user()->gravatar() }}" alt="" class="rounded-circle" style="width:40px; height:40px;"></a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

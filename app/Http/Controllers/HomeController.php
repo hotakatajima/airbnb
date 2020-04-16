@@ -3,17 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\House;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function index()
     {
-        $this->middleware('auth');
+        $houses = House::where('publish',true)->get();
+        return view('welcome',compact('houses'));
     }
-
 }
